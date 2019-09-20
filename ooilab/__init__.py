@@ -4,4 +4,4 @@
     Rutgers University
     Version 0.1, 9/20/2019
 """
-import .portal
+import ooilab.portal
