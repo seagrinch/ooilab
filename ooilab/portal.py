@@ -47,7 +47,7 @@ def get_data(url, bad_inst=''):
             float(i[-4])
         except:
             x.remove(i)
-    datasets = [os.path.join(tds_url, i) for i in x]
+    datasets = [os.path.join(tds_url, i+'#fillmismatch') for i in x]
 
     # Remove extraneous files if necessary
     selected_datasets = []
