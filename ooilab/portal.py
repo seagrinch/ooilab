@@ -1,7 +1,5 @@
 """ OOI Data Labs Library - Data Portal Functions """
 
-# Written by Sage Lichtenwalner, Rutgers University, 2019
-
 import requests
 import os
 import re
