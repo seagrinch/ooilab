@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: ooilab
+Version: 0.1
+Summary: A library to facilitate data requests to the OOI Data Portal
+Home-page: https://github.com/seagrinch/ooilab
+Author: Sage Lichtenwalner
+Author-email: sage@marine.rutgers.edu
+License: MIT
+Description: UNKNOWN
+Keywords: oceanography,ooi
+Platform: UNKNOWN
