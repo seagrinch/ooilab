@@ -9,5 +9,5 @@ setup(name='ooilab',
       license='MIT',
       packages=['ooilab'],
       keywords=['oceanography', 'ooi'],
-      install_requires=['numpy','xarray','netcdf4'],
+      install_requires=['numpy'],
       zip_safe=False)

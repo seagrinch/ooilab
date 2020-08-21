@@ -8,7 +8,6 @@
 import requests
 import os
 import re
-import xarray as xr
 import numpy as np
 
 
