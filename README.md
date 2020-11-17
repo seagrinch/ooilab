@@ -20,10 +20,10 @@ import ooilab
 
 You will then have access to several functions you can use to request, retrieve and work with data from the OOI.
 
-* request_data(reference_designator,method,stream,start_date=None,end_date=None)
+* request_data(reference_designator, method, stream, start_date=None, end_date=None)
 * get_filelist(url)
-* reject_outliers(data, m=5)
-* clean_data(data,min=0,max=100)
+* reject_outliers(data, sd=5)
+* clean_data(data, min=0, max=100, sd=5)
 
 Note, in order to use the request_data function, you will first need to add your API username and token, which you can get from your profile page on the OOI Data Portal.  You can add them to your notebook using the following format.
 
@@ -31,6 +31,9 @@ Note, in order to use the request_data function, you will first need to add your
 ooilab.API_USERNAME = ''
 ooilab.API_TOKEN = ''
 ```
+
+Specifying dates for request_data is optional.  If you leave them out, the system will return all avaialble data from the system.  If you want to limit the range of data returned, you must specify the dates in the format '2018-07-01T00:00:00.000Z'. 
+
 
 ### Support
 
