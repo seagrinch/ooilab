@@ -68,21 +68,27 @@ def get_filelist(url):
   return selected_datasets
 
 
-def reject_outliers(data, m=5):
+def reject_outliers(data, sd=5):
     """
-    Reject outliers beyond m standard deviations of the mean.
+    Idenfity outliers beyond sd standard deviations of the mean.
     :param data: numpy array containing data
-    :param m: number of standard deviations from the mean. Default: 3
+    :param sd: number of standard deviations from the mean, default 5
     """
     stdev = np.nanstd(data)
     if stdev > 0.0:
-        ind = abs(data - np.nanmean(data)) < m * stdev
+        ind = abs(data - np.nanmean(data)) < sd * stdev
     else:
         ind = len(data) * [True]
-
     return ind
-
-def clean_data(data,min=0,max=100):
-  data = data.where((data>min) & (data<max))
-  data = data.where(reject_outliers(data))
-  return data
+   
+   
+def clean_data(data,min=0,max=100,sd=5):
+    """
+    Cleans a dataset by removing outliers outside min/max and beyond sd standard deviations of the mean.
+    :param min: minimum value, default 0
+    :param max: maximum value, default 100
+    :param sd: number of standard deviations from the mean, default 5
+    """
+    data = data.where((data>min) & (data<max))
+    data = data.where(reject_outliers(data),sd)
+    return data
