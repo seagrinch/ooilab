@@ -90,5 +90,5 @@ def clean_data(data,min=0,max=100,sd=5):
     :param sd: number of standard deviations from the mean, default 5
     """
     data = data.where((data>min) & (data<max))
-    data = data.where(reject_outliers(data),sd)
+    data = data.where(reject_outliers(data,sd))
     return data
