@@ -9,6 +9,7 @@ import requests
 import os
 import re
 import numpy as np
+import xarray as xr
 
 
 def request_data(reference_designator,method,stream,start_date=None,end_date=None):
@@ -68,7 +69,7 @@ def get_filelist(url):
   return selected_datasets
 
 
-def get_data(filelist,subsetlist=None):
+def get_data(file_list,subset_list=None):
   """
   Returns an xarray dataset of all data.  
   :param filelist: list of .nc files to open and concatenate, required
@@ -77,10 +78,10 @@ def get_data(filelist,subsetlist=None):
   xr.open_mfdataset(filelist).swap_dims({'obs': 'time'}).sortby('time')
   """
   datasets = []
-  for f in filelist:
+  for f in file_list:
     ds0 = xr.open_dataset(f).swap_dims({'obs': 'time'})
-    if (subsetlist):
-      ds0 = ds0[subsetlist]
+    if (subset_list):
+      ds0 = ds0[subset_list]
     datasets.append(ds0)
   return xr.merge(datasets).sortby('time')
 

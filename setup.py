@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='ooilab',
-      version='0.2',
+      version='0.3',
       description='Functions to facilitate data requests from the OOI Data Portal',
       url='https://github.com/seagrinch/ooilab',
       author='Sage Lichtenwalner',
@@ -9,5 +9,5 @@ setup(name='ooilab',
       license='MIT',
       packages=['ooilab'],
       keywords=['oceanography', 'ooi'],
-      install_requires=['numpy'],
+      install_requires=['numpy','xarray'],
       zip_safe=False)
