@@ -2,7 +2,7 @@
  OOILab - OOI Data Labs - Data Portal Functions
     Sage Lichtenwalner <sage@marine.rutgers.edu>
     Rutgers University
-    Version 0.2, 8/21/2020
+    Version 0.3, 9/2/2021
 """
 
 import requests
@@ -66,6 +66,23 @@ def get_filelist(url):
       selected_datasets.append(d + '#fillmismatch') # Add #fillmismatch to the URL to deal with a bug
   selected_datasets = sorted(selected_datasets)
   return selected_datasets
+
+
+def get_data(filelist,subsetlist=None):
+  """
+  Returns an xarray dataset of all data.  
+  :param filelist: list of .nc files to open and concatenate, required
+  :param subsetlist: list of variables to concatenate, e.g. ['var1','var2'], defaults to all
+  This is equivalent to running the following command (which doesn't seem to work anymore)
+  xr.open_mfdataset(filelist).swap_dims({'obs': 'time'}).sortby('time')
+  """
+  datasets = []
+  for f in filelist:
+    ds0 = xr.open_dataset(f).swap_dims({'obs': 'time'})
+    if (subsetlist):
+      ds0 = ds0[subsetlist]
+    datasets.append(ds0)
+  return xr.merge(datasets).sortby('time')
 
 
 def reject_outliers(data, sd=5):
