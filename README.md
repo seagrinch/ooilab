@@ -22,7 +22,7 @@ You will then have access to several functions you can use to request, retrieve 
 
 * `request_data(reference_designator, method, stream, start_date=None, end_date=None)`
 * `get_filelist(url)`
-* `get_data(file_list, subset_list=None)`
+* `get_data(file_list, subset_list=None, verbose=False, load_increment=False)`
 * `reject_outliers(data, sd=5)`
 * `clean_data(data, min=0, max=100, sd=5)`
 

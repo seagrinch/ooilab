@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='ooilab',
-      version='0.3',
+      version='0.3.1',
       description='Functions to facilitate data requests from the OOI Data Portal',
       url='https://github.com/seagrinch/ooilab',
       author='Sage Lichtenwalner',

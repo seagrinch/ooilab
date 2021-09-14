@@ -69,7 +69,7 @@ def get_filelist(url):
   return selected_datasets
 
 
-def get_data(file_list,subset_list=None):
+def get_data(file_list, subset_list=None, verbose=False, load_increment=False):
   """
   Returns an xarray dataset of all data.  
   :param filelist: list of .nc files to open and concatenate, required
@@ -79,9 +79,13 @@ def get_data(file_list,subset_list=None):
   """
   datasets = []
   for f in file_list:
+    if (verbose):
+      print(f)
     ds0 = xr.open_dataset(f).swap_dims({'obs': 'time'})
     if (subset_list):
       ds0 = ds0[subset_list]
+    if (load_increment):
+      ds0 = ds0.load()
     datasets.append(ds0)
   return xr.merge(datasets).sortby('time')
 
